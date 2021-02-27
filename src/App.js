@@ -13,7 +13,8 @@ function App() {
   let [img,setImg] = useState()
   let db = firebase.firestore().collection('users')
 let storage = firebase.storage()
-  
+
+    
 
   useEffect(()=>{
      firebase.auth().onAuthStateChanged(user => {
@@ -42,12 +43,6 @@ let storage = firebase.storage()
           .then((data)=>{
             
             let userData = data.data()
-            console.log(userData)
-            //  if(userData.img){
-              
-              //    userData.img = img
-              //  }
-              //  console.log(url,data.data())
               dispatch(getCurrentUserInfo(userData))
             }).catch((err)=>{
               console.log('failed to get data from database')
@@ -56,12 +51,8 @@ let storage = firebase.storage()
           setLoading(true)
         })
       },[])
-      // console.log(currUser)
 
-//  setTimeout(()=>{
-//   setLoading(true)
-// },1200)
-
+      
 if(!loading){
   return <div className='load'>loading ...</div>
 }

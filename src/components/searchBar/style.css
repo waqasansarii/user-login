@@ -1,0 +1,35 @@
+.head{
+    margin-top: 3rem;
+    text-align: center;
+}
+.main_search{
+    text-align: center;
+    
+}
+.search_bar{
+    /* margin: 0px auto; */
+    margin-top: 2rem;
+    width: 18rem;
+    height: 2rem;
+    /* border-radius: .2rem; */
+    padding-left: .4rem;
+    font-size: 1rem;
+    border: none;
+    outline: none;
+    border-bottom: 2px solid ;
+    padding-bottom: -0.2rem;
+}
+.myBtn{
+    padding: .5rem 2rem;
+    margin-left: .5rem;
+    height: 2rem;
+    border-radius: .5rem;
+    border: none;
+    outline: none;
+    background-color: rgb(108, 108, 243);
+    color: white;
+}
+.myBtn:active{
+    background-color: rgb(110, 110, 182);
+    transform: translate(2px , 2px);
+}

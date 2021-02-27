@@ -1,15 +1,6 @@
 import { Initial_State } from './initialState'
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 
-
-// export const signUpWithGoogle = createAsyncThunk(
-//     'userSignup/Google',
-//     async (data) => {
-//         return  await data;
-       
-//     }
-// )
-
 // user image from firebase storage
 
 export const userImage = createAsyncThunk(
@@ -30,19 +21,23 @@ export const getCurrentUserInfo = createAsyncThunk(
     }
 )
 
-
-
-
+export const githubUsers = createAsyncThunk(
+    'githubuser/search',
+    async (data)=> {
+    //  console.log(await data)
+     return await data
+    }
+)
+  
+              //Create slice
 
 
 const Users = createSlice({
     name: 'users',
     initialState: Initial_State,
     reducers: {
-
         // set initial state empty after login so that previous data not show 
-
-        LogOutUser: (state, action) => {
+        LogOutUser: (state) => {
             state.users={
                 email:'',
                 id:'',
@@ -50,7 +45,10 @@ const Users = createSlice({
                 img:''
             }
             // console.log(action)
-        }
+        },
+        // githubUsers:(state,action)=>{
+        //       console.log(action.payload)
+        // }
     },
     extraReducers: {
         [getCurrentUserInfo.fulfilled]: (state, action) => {
@@ -63,8 +61,22 @@ const Users = createSlice({
             }
 
         },
-        [getCurrentUserInfo.pending]:()=>{
-               console.log('pemding')
+        [githubUsers.fulfilled]:(state,action)=>{
+            console.log(action.payload)
+            const {name,id,avatar_url,login,created_at,followers,public_repos,message} = action.payload
+            // let date = new Date()
+            
+            // console.log()
+            state.githubUser={
+                name,
+                img:avatar_url,
+                id,
+                login,
+                created_at,
+                followers,
+                public_repos,
+                message
+            }
         }
     }
 })
