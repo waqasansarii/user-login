@@ -1,5 +1,6 @@
 import { Initial_State } from './initialState'
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
+import firebase from 'firebase'
 
 // user image from firebase storage
 
@@ -26,6 +27,15 @@ export const githubUsers = createAsyncThunk(
     async (data)=> {
     //  console.log(await data)
      return await data
+    }
+)
+
+export const saveGithubUsersDataInDatabase = createAsyncThunk(
+    'githubUsersDataSave/firestore',
+    async (id,info)=>{
+        
+        console.log(id,info)
+        // firebase.firestore().collection('historyGithubUsers').doc(id)
     }
 )
   
@@ -62,7 +72,7 @@ const Users = createSlice({
 
         },
         [githubUsers.fulfilled]:(state,action)=>{
-            console.log(action.payload)
+            // console.log(action.payload)
             const {name,id,avatar_url,login,created_at,followers,public_repos,message} = action.payload
             // let date = new Date()
             

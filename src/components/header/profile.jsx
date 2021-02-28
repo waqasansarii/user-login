@@ -17,11 +17,7 @@ const Profile = () =>{
 
     // let urlImg = URL.createObjectURL(img)
 
-    if(!id){
-        return <div className='load'>loading...</div>
-    }
 
-    // console.log(userSelector)
     return(
         <div>
             <h1 style={{textAlign:'center',marginTop:'20px',marginBottom:'20px'}}>welcom dear</h1>
