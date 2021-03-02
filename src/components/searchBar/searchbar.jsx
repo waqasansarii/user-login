@@ -15,7 +15,7 @@ const SearchBar = () => {
 
     const { users: { id } } = selector;
 
-    console.log(id)
+    // console.log(id)
 
     let [value, setValue] = useState('')
     let [user, setUser] = useState('')
@@ -28,7 +28,7 @@ const SearchBar = () => {
         let res = await fetch(`https://api.github.com/users/${value}`)
         let json = await res.json()
 
-        console.log(json)
+        // console.log(json)
         setUser(json)
         dispatch(githubUsers(json))
 
@@ -46,22 +46,23 @@ const SearchBar = () => {
                 .then(() => {
                     console.log('added')
                 })
-            // dispatch(saveGithubUsersDataInDatabase(json,id))
-            console.log('yes')
-
-        } else {
-            console.log('failed')
+                console.log('yes')
+                
+            } else {
+                console.log('failed')
+            }
+            // return json
+            setValue('')
         }
-        // return json
-        setValue('')
-    }
-    
-    useEffect(()=>{
         
-        firebase.firestore().collection('githubUsersHistory').doc(id).collection('UsersHistory').get()
-        .then((res)=>{
-            res.forEach((data)=>{
-                console.log(data.data())
+        useEffect(()=>{
+            
+            firebase.firestore().collection('githubUsersHistory').doc(id).collection('UsersHistory').get()
+            .then((res)=>{
+                res.forEach((data)=>{
+                    let getData = data.data()
+                    console.log(data.data())
+                    dispatch(saveGithubUsersDataInDatabase(getData))
             })
         })
     },[])

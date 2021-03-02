@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-d
 import LogIn from '../screens/login'
 import SignUp from '../screens/signup'
 import DashBoard from '../screens/dashboard'
+import HistoryScreen from '../screens/history'
 
 
 const AppRouter = ({ user }) => {
@@ -43,6 +44,7 @@ const AppRouter = ({ user }) => {
 
 
                     </Route>
+                    <Route path='/history' component={HistoryScreen} />
                 </Switch>
             </div>
         </Router>

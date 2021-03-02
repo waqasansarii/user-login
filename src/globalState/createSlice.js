@@ -32,9 +32,9 @@ export const githubUsers = createAsyncThunk(
 
 export const saveGithubUsersDataInDatabase = createAsyncThunk(
     'githubUsersDataSave/firestore',
-    async (id,info)=>{
+    async (data)=>{
         
-        console.log(id,info)
+        return await data
         // firebase.firestore().collection('historyGithubUsers').doc(id)
     }
 )
@@ -87,6 +87,18 @@ const Users = createSlice({
                 public_repos,
                 message
             }
+        },
+        [saveGithubUsersDataInDatabase.fulfilled]:(state,action)=>{
+            let {created,followers,id,img,name,repos} = action.payload
+            state.searchHistory={
+              name,
+              img,
+              created,
+              followers,
+              repos,
+              id
+            }
+            console.log(action.payload)
         }
     }
 })

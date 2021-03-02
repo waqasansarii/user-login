@@ -1,10 +1,11 @@
 import React,{useEffect} from 'react'
 import './style.css'
 import firebase from 'firebase'
-import {useHistory} from 'react-router-dom'
+import {useHistory,Link} from 'react-router-dom'
 import {useDispatch} from 'react-redux'
 import Profile from './profile'
 import {LogOutUser} from '../../globalState/createSlice'
+
 
 
 const Header = () => {
@@ -28,7 +29,7 @@ const Header = () => {
         <div className='header_container'>
             <div className='header_div'>
                 {/* <img src="" alt=""/> */}
-                <p> </p>
+                <Link to='/history'>History </Link>
                 <button onClick={logOut} className='logout_btn'>Log out</button>
             </div>
             <div >

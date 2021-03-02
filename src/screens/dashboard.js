@@ -10,7 +10,7 @@ const DashBoard = () => {
     return state.usersReducers.users
   })
 
-  console.log(selector)
+  // console.log(selector)
   const {id} = selector;
 
   if(!id){
