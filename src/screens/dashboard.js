@@ -10,8 +10,8 @@ const DashBoard = () => {
     return state.usersReducers.users
   })
 
-  // console.log(selector)
   const {id} = selector;
+  // console.log(id)
 
   if(!id){
     return <div style={{textAlign:'center'}}>loading...</div>

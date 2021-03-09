@@ -90,15 +90,18 @@ const Users = createSlice({
         },
         [saveGithubUsersDataInDatabase.fulfilled]:(state,action)=>{
             let {created,followers,id,img,name,repos} = action.payload
-            state.searchHistory={
-              name,
-              img,
-              created,
-              followers,
-              repos,
-              id
-            }
-            console.log(action.payload)
+            
+            // ...state.searchHistory,
+             state.searchHistory=[{
+                   name,
+                    img,
+                    created,
+                    followers,
+                    repos,
+                    id
+                },...state.searchHistory]
+            
+            // console.log(action.payload)
         }
     }
 })
